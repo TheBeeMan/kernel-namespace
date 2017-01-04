@@ -1,4 +1,4 @@
-# kernel usernamespace
+# kernel user namespace
 linux kernel introduced namespace mechanism since 2.4.19, especially with 3.8, creating user namespace for an unprivileged user comes true, in which a full set of caps granted to you. However it is just available in some linux distribution(ubuntu, debian...).
 
 ## 1. what is user namespce? ##
