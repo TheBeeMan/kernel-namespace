@@ -34,4 +34,9 @@ The /proc/PID/uid_map file is owned by the user ID that created the namespace, a
 
 - ***The process has the CAP_SETUID/CAP_SETGID capability in the parent user namespace. Such a process can define mappings to arbitrary user IDs (group IDs) in the parent user namespace***. As we noted earlier, the initial process in a new user namespace has no capabilities in the parent namespace. Thus, only a process in the parent namespace can write a mapping that maps arbitrary IDs in the parent user namespace.
 
-## 3. which part should keep attention? ##
+## 3. keep attention for setgroups? ##
+Linux 3.19 and later do not allow unprivileged processes to write a GID map
+unless the setgroups() call has been permanently disabled by writing "deny"
+to /proc/PID/setgroups. This is a fix for CVE-2014-8989 which applied to
+strangely-configured systems where group membership implies more restricted
+permissions rather than supplementary permissions.
