@@ -21,7 +21,7 @@ ID-inside-ns defines the start point in the container corresponding to ID-outsid
 
 Usually, mapping could be done in the user namespace or parent user namespce. it all depends on:
 
-- in user namespace, then ID-outside-ns is interpreted as a user ID (group ID) in the parent user namespace of the process PID. The common case here is that a process is writing to its own mapping file (/proc/self/uid_map or /proc/self/gid_map).
+- in user namespace, ***then ID-outside-ns is interpreted as a user ID (group ID) in the parent user namespace of the process PID***. The common case here is that a process is writing to its own mapping file (/proc/self/uid_map or /proc/self/gid_map).
 
 - in parent user namespaces, then ID-outside-ns is interpreted as a user ID (group ID) in the user namespace of the process opening /proc/PID/uid_map (/proc/PID/gid_map). The writing process is then defining the mapping relative to its own user namespace.
 
@@ -34,7 +34,7 @@ The /proc/PID/uid_map file is owned by the user ID that created the namespace, a
 
 - ***The process has the CAP_SETUID/CAP_SETGID capability in the parent user namespace. Such a process can define mappings to arbitrary user IDs (group IDs) in the parent user namespace***. As we noted earlier, the initial process in a new user namespace has no capabilities in the parent namespace. Thus, only a process in the parent namespace can write a mapping that maps arbitrary IDs in the parent user namespace.
 
-## 3. keep attention for setgroups? ##
+## 3. which part should keep attention? ##
 Linux 3.19 and later do not allow unprivileged processes to write a GID map
 unless the setgroups() call has been permanently disabled by writing "deny"
 to /proc/PID/setgroups. This is a fix for CVE-2014-8989 which applied to
