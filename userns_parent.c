@@ -30,16 +30,6 @@ static child_stack[STACK_SIZE];
 static int ns_in_ids[] = {0};
 static int ns_out_ids[] = {1000};
 
-char *string(const char *format, ...) {
-  char *result;
-  va_list args;
-
-  va_start(args, format);
-  if (vasprintf(&result, format, args) < 0)
-    error(1, errno, "asprintf");
-  va_end(args);
-  return result;
-}
 
 void set_ns_mapping(int mod, int *ns_in_ids, int *ns_out_ids, int length, int range, int pid) {
     FILE *fp;
