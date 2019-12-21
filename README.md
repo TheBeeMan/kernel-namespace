@@ -8,11 +8,11 @@ it is to keep being rooted from container escape, with this security option, a p
 In conclusion, you are the king in container, but nothing outside.
 
 ## 2. how to use user namespce? ##
-### 2.1 clone###
+### 2.1 clone
 
 User namespaces are created by specifying the CLONE_NEWUSER flag when calling clone() or unshare(). 
 
-###2.2 rules for mapping###
+### 2.2 rules for mapping
 Defining the mappings used for the user and group IDs of the processes that will be created in that namespace. This is done by writing mapping information to the /proc/PID/uid_map and /proc/PID/gid_map files corresponding to one of the processes in the user namespace. (Initially, these two files are empty.) This information consists of one or more lines, each of which contains three values separated by white space:
 
     ID-inside-ns   ID-outside-ns   length
