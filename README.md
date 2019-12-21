@@ -8,7 +8,7 @@ it is to keep being rooted from container escape, with this security option, a p
 In conclusion, you are the king in container, but nothing outside.
 
 ## 2. how to use user namespce? ##
-###2.1 clone###
+### 2.1 clone###
 
 User namespaces are created by specifying the CLONE_NEWUSER flag when calling clone() or unshare(). 
 
